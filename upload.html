@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="foto/kominfo.jpg" type="image/png" />
+    <title>Upload - KOMINFO PMKN 2025</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow:
+            0 0 10px rgba(26, 167, 226, 0.5),
+            0 0 20px rgba(26, 167, 226, 0.3);
+        }
+        50% {
+          text-shadow:
+            0 0 20px rgba(26, 167, 226, 0.8),
+            0 0 40px rgba(26, 167, 226, 0.5);
+        }
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(-45deg, #0a0e27, #1a1a3e, #16213e, #0f3460);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: #fff;
+        padding-top: 80px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: rgba(15, 30, 50, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 8px 32px 0 rgba(26, 167, 226, 0.2);
+        border-bottom: 2px solid rgba(26, 167, 226, 0.3);
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        cursor: pointer;
+        animation: glow 3s ease-in-out infinite;
+        color: #1ba7e2;
+      }
+
+      .logo {
+        height: 55px;
+        width: 55px;
+        margin-right: 15px;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 0 20px rgba(26, 167, 226, 0.4);
+        border: 2px solid rgba(26, 167, 226, 0.5);
+        object-fit: cover;
+      }
+
+      .logo:hover {
+        transform: scale(1.15) rotate(5deg);
+        box-shadow: 0 0 40px rgba(26, 167, 226, 0.8);
+        border-color: rgba(26, 167, 226, 0.8);
+      }
+
+      .header-left:hover {
+        color: #00d4ff;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        background: none;
+        border: none;
+        padding: 10px;
+      }
+
+      .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: #1ba7e2;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      .menu {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+      }
+
+      .menu a {
+        color: #e0e0e0;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .menu a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 167, 226, 0.3);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      .menu a:hover::before {
+        left: 0;
+      }
+
+      .menu a:hover {
+        color: #00d4ff;
+        transform: translateY(-2px);
+      }
+
+      .menu a.active {
+        background-color: rgba(26, 167, 226, 0.5);
+        color: #00d4ff;
+      }
+
+      .content {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 40px;
+        animation: floatIn 0.8s ease-out;
+      }
+
+      .page-title {
+        font-size: 56px;
+        font-weight: 900;
+        margin-bottom: 40px;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2, #00d4ff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: glow 4s ease-in-out infinite;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      .upload-description {
+        font-size: 18px;
+        color: #b0e0e6;
+        margin-bottom: 40px;
+        padding: 30px;
+        border-left: 4px solid rgba(26, 167, 226, 0.5);
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.08),
+          rgba(0, 212, 255, 0.05)
+        );
+        border-radius: 12px;
+        border: 1px solid rgba(26, 167, 226, 0.3);
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      .button-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+        margin-top: 50px;
+        animation: floatIn 1s ease-out 0.2s both;
+      }
+
+      .button {
+        padding: 30px 25px;
+        border: 2px solid rgba(26, 167, 226, 0.6);
+        border-radius: 18px;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.12),
+          rgba(0, 212, 255, 0.06)
+        );
+        color: #1ba7e2;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 8px 32px 0 rgba(26, 167, 226, 0.12);
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        justify-content: center;
+        min-height: 140px;
+      }
+
+      .button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(0, 212, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s ease,
+          height 0.6s ease;
+        z-index: 0;
+      }
+
+      .button::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        border-radius: 18px;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .button-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .button-icon {
+        font-size: 40px;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        display: block;
+      }
+
+      .button-text {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .button:hover::before {
+        width: 400px;
+        height: 400px;
+      }
+
+      .button:hover {
+        transform: translateY(-12px) scale(1.08);
+        box-shadow: 0 28px 52px rgba(26, 167, 226, 0.4);
+        border-color: rgba(0, 212, 255, 0.9);
+        color: #00d4ff;
+      }
+
+      .button:hover .button-icon {
+        transform: scale(1.25) rotate(15deg);
+      }
+
+      .button:active {
+        transform: translateY(-4px) scale(0.98);
+      }
+
+      .floating-element {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0.05;
+        pointer-events: none;
+        animation: float 8s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        50% {
+          transform: translateY(-30px) translateX(20px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+
+        .menu {
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          flex-direction: column;
+          background: rgba(15, 30, 50, 0.98);
+          backdrop-filter: blur(10px);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+          gap: 0;
+          border-bottom: 2px solid rgba(26, 167, 226, 0.3);
+          z-index: 999;
+        }
+
+        .menu.active {
+          max-height: 300px;
+        }
+
+        .menu li {
+          width: 100%;
+          border-bottom: 1px solid rgba(26, 167, 226, 0.2);
+        }
+
+        .menu a {
+          display: block;
+          padding: 15px 20px;
+          border-radius: 0;
+          width: 100%;
+          text-align: left;
+        }
+
+        .header {
+          padding: 15px 20px;
+        }
+
+        .header-left {
+          font-size: 20px;
+        }
+
+        body {
+          padding-top: 70px;
+        }
+
+        .content {
+          padding: 20px;
+          margin: 40px auto;
+        }
+
+        .page-title {
+          font-size: 36px;
+        }
+
+        .button-container {
+          grid-template-columns: 1fr;
+          padding: 0 20px;
+          gap: 20px;
+        }
+
+        .button {
+          padding: 22px 20px;
+          font-size: 14px;
+          min-height: 120px;
+        }
+
+        .button-icon {
+          font-size: 32px;
+        }
+
+        .button-text {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background Elements -->
+    <div
+      class="floating-element"
+      style="
+        width: 300px;
+        height: 300px;
+        background: #1ba7e2;
+        top: 10%;
+        left: 10%;
+      "
+    ></div>
+    <div
+      class="floating-element"
+      style="
+        width: 200px;
+        height: 200px;
+        background: #00d4ff;
+        top: 60%;
+        right: 5%;
+        animation-delay: 2s;
+      "
+    ></div>
+    <div
+      class="floating-element"
+      style="
+        width: 250px;
+        height: 250px;
+        background: #0f3460;
+        bottom: 10%;
+        left: 30%;
+        animation-delay: 4s;
+      "
+    ></div>
+
+    <!-- Header Navigation -->
+    <div class="header">
+      <div class="header-left">
+        <img src="foto/kominfo.jpg" alt="Logo" class="logo" />
+        KOMINFO PMKN
+      </div>
+      <div class="header-right">
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="menu" id="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="upload.html" class="active">Upload</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <h1 class="page-title">Upload Portal</h1>
+      <div class="upload-description">
+        <p>
+          Akses dan kelola semua file proyek dan sumber daya Anda. Klik salah
+          satu tombol di bawah ini untuk mengakses kategori berbeda dan
+          mengunggah materi Anda ke folder Google Drive yang sesuai.
+        </p>
+      </div>
+
+      <!-- Interactive Buttons Grid -->
+      <div class="button-container">
+        <button
+          class="button"
+          onclick="
+            window.open(
+              'https://drive.google.com/drive/folders/1D3z4W4DWCJmdkK7gCQFkNEviW7ZKY9k1',
+              '_blank',
+            )
+          "
+        >
+          <div class="button-content">
+            <span class="button-icon">📅</span>
+            <span class="button-text">Acara PMKN</span>
+          </div>
+        </button>
+        <button
+          class="button"
+          onclick="
+            window.open(
+              'https://drive.google.com/drive/folders/1UrsUk6y4ac_kSSmyrikEIP1Q3YkMAWna',
+              '_blank',
+            )
+          "
+        >
+          <div class="button-content">
+            <span class="button-icon">📄</span>
+            <span class="button-text">Brosur</span>
+          </div>
+        </button>
+        <button
+          class="button"
+          onclick="
+            window.open(
+              'https://drive.google.com/drive/folders/10Jd6-yx4kEgFUDlhNjttk5vDCd73b_pB',
+              '_blank',
+            )
+          "
+        >
+          <div class="button-content">
+            <span class="button-icon">🎉</span>
+            <span class="button-text">Hari Besar</span>
+          </div>
+        </button>
+        <button
+          class="button"
+          onclick="
+            window.open(
+              'https://drive.google.com/drive/folders/192ECqleB2Ja5AKS9OSf-qkLz_YHzSsvv',
+              '_blank',
+            )
+          "
+        >
+          <div class="button-content">
+            <span class="button-icon">🙏</span>
+            <span class="button-text">Ibadah</span>
+          </div>
+        </button>
+        <button
+          class="button"
+          onclick="
+            window.open(
+              'https://drive.google.com/drive/folders/1wvyvks3WgcfJNebI0hpb6FZy45bSNHy3',
+              '_blank',
+            )
+          "
+        >
+          <div class="button-content">
+            <span class="button-icon">💼</span>
+            <span class="button-text">Rapat</span>
+          </div>
+        </button>
+        <button
+          class="button"
+          onclick="
+            window.open(
+              'https://drive.google.com/drive/folders/1ywLvNdyQKmWmOL4nO5lpJWaUvP3fA6VH',
+              '_blank',
+            )
+          "
+        >
+          <div class="button-content">
+            <span class="button-icon">🎊</span>
+            <span class="button-text">Ucapan</span>
+          </div>
+        </button>
+        <button
+          class="button"
+          onclick="
+            window.open(
+              'https://drive.google.com/drive/folders/1DGzWFNb6nVuQeta9dJBUiH8pm2qHDb0H',
+              '_blank',
+            )
+          "
+        >
+          <div class="button-content">
+            <span class="button-icon">🎂</span>
+            <span class="button-text">Ulang Tahun</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <script>
+      // Hamburger Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("menu");
+
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        menu.classList.toggle("active");
+      });
+
+      // Close menu when a link is clicked
+      const menuLinks = menu.querySelectorAll("a");
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          menu.classList.remove("active");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          !e.target.closest(".header-right") &&
+          !e.target.closest(".header-left")
+        ) {
+          menuToggle.classList.remove("active");
+          menu.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

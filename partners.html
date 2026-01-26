@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="foto/kominfo.jpg" type="image/png" />
+    <title>Partners - KOMINFO PMKN 2025</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow:
+            0 0 10px rgba(26, 167, 226, 0.5),
+            0 0 20px rgba(26, 167, 226, 0.3);
+        }
+        50% {
+          text-shadow:
+            0 0 20px rgba(26, 167, 226, 0.8),
+            0 0 40px rgba(26, 167, 226, 0.5);
+        }
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(-45deg, #0a0e27, #1a1a3e, #16213e, #0f3460);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: #fff;
+        padding-top: 80px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: rgba(15, 30, 50, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 8px 32px 0 rgba(26, 167, 226, 0.2);
+        border-bottom: 2px solid rgba(26, 167, 226, 0.3);
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        cursor: pointer;
+        animation: glow 3s ease-in-out infinite;
+        color: #1ba7e2;
+      }
+
+      .logo {
+        height: 55px;
+        width: 55px;
+        margin-right: 15px;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 0 20px rgba(26, 167, 226, 0.4);
+        border: 2px solid rgba(26, 167, 226, 0.5);
+        object-fit: cover;
+      }
+
+      .logo:hover {
+        transform: scale(1.15) rotate(5deg);
+        box-shadow: 0 0 40px rgba(26, 167, 226, 0.8);
+        border-color: rgba(26, 167, 226, 0.8);
+      }
+
+      .header-left:hover {
+        color: #00d4ff;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        background: none;
+        border: none;
+        padding: 10px;
+      }
+
+      .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: #1ba7e2;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      .menu {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+      }
+
+      .menu a {
+        color: #e0e0e0;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .menu a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 167, 226, 0.3);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      .menu a:hover::before {
+        left: 0;
+      }
+
+      .menu a:hover {
+        color: #00d4ff;
+        transform: translateY(-2px);
+      }
+
+      .menu a.active {
+        background-color: rgba(26, 167, 226, 0.5);
+        color: #00d4ff;
+      }
+
+      .content {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 40px;
+        animation: floatIn 0.8s ease-out;
+      }
+
+      .page-title {
+        font-size: 56px;
+        font-weight: 900;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2, #00d4ff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: glow 4s ease-in-out infinite;
+        letter-spacing: 2px;
+      }
+
+      .content-text {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #b0e0e6;
+        margin-bottom: 40px;
+        padding: 20px;
+        border-left: 4px solid rgba(26, 167, 226, 0.5);
+        background: rgba(26, 167, 226, 0.05);
+        border-radius: 8px;
+      }
+
+      .members-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+        animation: floatIn 1s ease-out 0.3s both;
+      }
+
+      .member-card {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.15),
+          rgba(0, 212, 255, 0.08)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 8px 32px rgba(26, 167, 226, 0.1);
+      }
+
+      .member-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 16px 48px rgba(26, 167, 226, 0.25);
+        border-color: rgba(0, 212, 255, 0.6);
+      }
+
+      .member-photo {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        border-bottom: 2px solid rgba(26, 167, 226, 0.3);
+      }
+
+      .member-info {
+        padding: 25px;
+      }
+
+      .member-name {
+        font-size: 22px;
+        font-weight: 800;
+        color: #00d4ff;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+      }
+
+      .member-position {
+        font-size: 14px;
+        color: #1ba7e2;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      .member-details {
+        font-size: 14px;
+        color: #b0e0e6;
+        line-height: 1.8;
+      }
+
+      .member-detail-item {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .member-detail-label {
+        font-weight: 600;
+        color: #1ba7e2;
+        min-width: 80px;
+      }
+
+      .member-detail-value {
+        color: #b0e0e6;
+        word-break: break-word;
+      }
+
+      .floating-element {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0.05;
+        pointer-events: none;
+        animation: float 8s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        50% {
+          transform: translateY(-30px) translateX(20px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu-toggle {
+          display: flex;
+        }
+
+        .menu {
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          flex-direction: column;
+          background: rgba(15, 30, 50, 0.98);
+          backdrop-filter: blur(10px);
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease;
+          gap: 0;
+          border-bottom: 2px solid rgba(26, 167, 226, 0.3);
+          z-index: 999;
+        }
+
+        .menu.active {
+          max-height: 300px;
+        }
+
+        .menu li {
+          width: 100%;
+          border-bottom: 1px solid rgba(26, 167, 226, 0.2);
+        }
+
+        .menu a {
+          display: block;
+          padding: 15px 20px;
+          border-radius: 0;
+          width: 100%;
+          text-align: left;
+        }
+
+        .header {
+          padding: 15px 20px;
+        }
+
+        .header-left {
+          font-size: 20px;
+        }
+
+        body {
+          padding-top: 70px;
+        }
+
+        .content {
+          padding: 20px;
+          margin: 40px auto;
+        }
+
+        .page-title {
+          font-size: 36px;
+        }
+
+        .content-text {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background Elements -->
+    <div
+      class="floating-element"
+      style="
+        width: 300px;
+        height: 300px;
+        background: #1ba7e2;
+        top: 10%;
+        left: 10%;
+      "
+    ></div>
+    <div
+      class="floating-element"
+      style="
+        width: 200px;
+        height: 200px;
+        background: #00d4ff;
+        top: 60%;
+        right: 5%;
+        animation-delay: 2s;
+      "
+    ></div>
+    <div
+      class="floating-element"
+      style="
+        width: 250px;
+        height: 250px;
+        background: #0f3460;
+        bottom: 10%;
+        left: 30%;
+        animation-delay: 4s;
+      "
+    ></div>
+
+    <!-- Header Navigation -->
+    <div class="header">
+      <div class="header-left">
+        <img src="foto/kominfo.jpg" alt="Logo" class="logo" />
+        KOMINFO PMKN
+      </div>
+      <div class="header-right">
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="menu" id="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="partners.html" class="active">Partners</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <h1 class="page-title">Partner Kominfo</h1>
+      <div class="content-text">
+        <p>
+          Kami bekerja dengan jaringan mitra dan organisasi yang beragam untuk
+          mendukung inisiatif PMKN 2025. Kolaborator kami membawa keahlian,
+          sumber daya, dan komitmen berharga untuk menjadikan acara ini sukses.
+        </p>
+        <p style="margin-top: 15px">
+          Melalui kemitraan strategis, kami memastikan bahwa semua peserta
+          memiliki akses ke sumber daya terbaik, panduan, dan dukungan sepanjang
+          program. Kami berterima kasih atas dukungan terus-menerus dari mitra
+          terpercaya kami.
+        </p>
+      </div>
+
+      <div class="members-grid">
+        <!-- Member 1 -->
+        <div class="member-card">
+          <img src="foto/kominfo.jpg" alt="" class="member-photo" />
+          <div class="member-info">
+            <div class="member-name">Jerstin Jernih Wati Ziliwu</div>
+            <div class="member-position">Koor. KOMINFO</div>
+            <div class="member-details">
+              <div class="member-detail-item">
+                <span class="member-detail-label">Email:</span>
+                <span class="member-detail-value">-</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Phone:</span>
+                <span class="member-detail-value">+62 822-1308-6969</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Major:</span>
+                <span class="member-detail-value">PTIK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="member-card">
+          <img src="foto/kominfoberlin.jpeg" alt="" class="member-photo" />
+          <div class="member-info">
+            <div class="member-name">Berlin Septenus Zalukhu</div>
+            <div class="member-position">Angt. KOMINFO</div>
+            <div class="member-details">
+              <div class="member-detail-item">
+                <span class="member-detail-label">Email:</span>
+                <span class="member-detail-value">berlinsepzal6@gmail.com</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Phone:</span>
+                <span class="member-detail-value">+62 823-5847-8663</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Major:</span>
+                <span class="member-detail-value">PTIK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="member-card">
+          <img src="foto/kominfo.jpg" alt="" class="member-photo" />
+          <div class="member-info">
+            <div class="member-name">Helena Reni Oktora Lase</div>
+            <div class="member-position">Angt. KOMINFO</div>
+            <div class="member-details">
+              <div class="member-detail-item">
+                <span class="member-detail-label">Email:</span>
+                <span class="member-detail-value">-</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Phone:</span>
+                <span class="member-detail-value">+62 813-1996-9469</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Major:</span>
+                <span class="member-detail-value">BK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="member-card">
+          <img src="foto/kominfo.jpg" alt="" class="member-photo" />
+          <div class="member-info">
+            <div class="member-name">Wan Ceria Putra Telaumbanua</div>
+            <div class="member-position">Angt. KOMINFO</div>
+            <div class="member-details">
+              <div class="member-detail-item">
+                <span class="member-detail-label">Email:</span>
+                <span class="member-detail-value">-</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Phone:</span>
+                <span class="member-detail-value">+62 822-7208-1267</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Major:</span>
+                <span class="member-detail-value">P. Sejarah</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 5 -->
+        <div class="member-card">
+          <img src="foto/kominfo.jpg" alt="" class="member-photo" />
+          <div class="member-info">
+            <div class="member-name">Erna Enjelika Daeli</div>
+            <div class="member-position">Angt. KOMINFO</div>
+            <div class="member-details">
+              <div class="member-detail-item">
+                <span class="member-detail-label">Email:</span>
+                <span class="member-detail-value">-</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Phone:</span>
+                <span class="member-detail-value">+62 822-6899-1330</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Major:</span>
+                <span class="member-detail-value">TI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 6 -->
+        <div class="member-card">
+          <img src="foto/kominfo.jpg" alt="" class="member-photo" />
+          <div class="member-info">
+            <div class="member-name">Welisman Telaumbanua</div>
+            <div class="member-position">Angt. KOMINFO</div>
+            <div class="member-details">
+              <div class="member-detail-item">
+                <span class="member-detail-label">Email:</span>
+                <span class="member-detail-value">-</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Phone:</span>
+                <span class="member-detail-value">+62 823-4019-3810</span>
+              </div>
+              <div class="member-detail-item">
+                <span class="member-detail-label">Major:</span>
+                <span class="member-detail-value">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Hamburger Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("menu");
+
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        menu.classList.toggle("active");
+      });
+
+      // Close menu when a link is clicked
+      const menuLinks = menu.querySelectorAll("a");
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          menu.classList.remove("active");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          !e.target.closest(".header-right") &&
+          !e.target.closest(".header-left")
+        ) {
+          menuToggle.classList.remove("active");
+          menu.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>
