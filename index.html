@@ -49,6 +49,38 @@
         }
       }
 
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @keyframes zoomIn {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
       @keyframes pulse {
         0%,
         100% {
@@ -56,6 +88,92 @@
         }
         50% {
           transform: scale(1.05);
+        }
+      }
+
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(-45deg, #0a0e27, #1a1a3e, #16213e, #0f3460);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .loading-screen.hidden {
+        animation: fadeOut 0.8s ease-out forwards;
+        pointer-events: none;
+      }
+
+      .loading-logo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid rgba(26, 167, 226, 0.5);
+        box-shadow: 0 0 30px rgba(26, 167, 226, 0.5);
+        animation:
+          zoomIn 0.8s ease-out,
+          spin 3s linear infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(26, 167, 226, 0.1);
+      }
+
+      .loading-logo img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      .loading-text {
+        font-size: 24px;
+        font-weight: 800;
+        color: #1ba7e2;
+        letter-spacing: 2px;
+        animation: glow 3s ease-in-out infinite;
+        text-align: center;
+      }
+
+      .loading-dots {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .loading-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #00d4ff;
+        animation: pulse 1.4s infinite;
+      }
+
+      .loading-dot:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .loading-dot:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
         }
       }
 
@@ -207,7 +325,11 @@
           top: 70px;
           right: 20px;
           flex-direction: column;
-          background: linear-gradient(135deg, rgba(15, 30, 50, 0.98), rgba(15, 40, 70, 0.95));
+          background: linear-gradient(
+            135deg,
+            rgba(15, 30, 50, 0.98),
+            rgba(15, 40, 70, 0.95)
+          );
           border: 2px solid rgba(26, 167, 226, 0.4);
           border-radius: 12px;
           padding: 8px 0;
@@ -494,6 +616,257 @@
         }
       }
 
+      .video-section {
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 0 20px;
+        animation: floatIn 0.8s ease-out;
+      }
+
+      .video-section h2 {
+        font-size: 36px;
+        font-weight: 900;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2, #00d4ff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-align: center;
+        letter-spacing: 1px;
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        border-radius: 15px;
+        overflow: hidden;
+        background: rgba(15, 30, 50, 0.8);
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        box-shadow: 0 20px 60px rgba(26, 167, 226, 0.2);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: pointer;
+        animation: floatIn 1s ease-out 0.3s both;
+      }
+
+      .video-container:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 80px rgba(26, 167, 226, 0.4);
+        border-color: rgba(0, 212, 255, 0.6);
+      }
+
+      .video-thumbnail {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+      }
+
+      .video-container:hover .video-thumbnail {
+        filter: brightness(0.7);
+      }
+
+      .play-button {
+        width: 80px;
+        height: 80px;
+        background: rgba(26, 167, 226, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 10px 40px rgba(26, 167, 226, 0.5);
+        border: 3px solid #00d4ff;
+      }
+
+      .video-container:hover .play-button {
+        width: 100px;
+        height: 100px;
+        background: rgba(0, 212, 255, 0.95);
+        box-shadow: 0 15px 50px rgba(0, 212, 255, 0.6);
+      }
+
+      .play-button::after {
+        content: "▶";
+        color: #fff;
+        font-size: 35px;
+        margin-left: 5px;
+      }
+
+      .video-description {
+        margin-top: 25px;
+        padding: 20px;
+        background: rgba(26, 167, 226, 0.08);
+        border-left: 4px solid rgba(26, 167, 226, 0.5);
+        border-radius: 10px;
+        font-size: 16px;
+        color: #b0e0e6;
+        line-height: 1.6;
+        animation: floatIn 1s ease-out 0.6s both;
+      }
+
+      .quick-links-section {
+        max-width: 800px;
+        margin: 80px auto;
+        padding: 0 20px;
+      }
+
+      .quick-links-section h2 {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 25px;
+        color: #1ba7e2;
+        text-align: center;
+      }
+
+      .quick-links-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .quick-link-item {
+        display: block;
+      }
+
+      .quick-link-item a {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        background: rgba(26, 167, 226, 0.08);
+        border: 1px solid rgba(26, 167, 226, 0.2);
+        border-radius: 8px;
+        text-decoration: none;
+        color: #b0e0e6;
+        transition: all 0.3s ease;
+      }
+
+      .quick-link-item a:hover {
+        background: rgba(26, 167, 226, 0.15);
+        border-color: rgba(26, 167, 226, 0.4);
+        padding-left: 25px;
+        color: #00d4ff;
+      }
+
+      .quick-link-icon {
+        font-size: 24px;
+        margin-right: 15px;
+        min-width: 30px;
+      }
+
+      .quick-link-text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .quick-link-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #00d4ff;
+      }
+
+      .quick-link-description {
+        font-size: 13px;
+        color: #8fb0c0;
+      }
+
+      .contact-info-section {
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 40px 20px;
+        border-top: 1px solid rgba(26, 167, 226, 0.2);
+        text-align: center;
+      }
+
+      .contact-info-section h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #1ba7e2;
+        margin-bottom: 20px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 15px;
+        color: #b0e0e6;
+        font-size: 15px;
+      }
+
+      .contact-icon {
+        font-size: 20px;
+      }
+
+      .contact-item a {
+        color: #00d4ff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .contact-item a:hover {
+        text-decoration: underline;
+      }
+
+      .visitor-stats-section {
+        max-width: 1000px;
+        margin: 100px auto;
+        padding: 50px 20px;
+        background: rgba(26, 167, 226, 0.05);
+        border: 1px solid rgba(26, 167, 226, 0.2);
+        border-radius: 10px;
+      }
+
+      .stats-title {
+        font-size: 24px;
+        font-weight: 800;
+        color: #1ba7e2;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+      }
+
+      .stat-box {
+        text-align: center;
+      }
+
+      .stat-icon {
+        font-size: 40px;
+        margin-bottom: 12px;
+      }
+
+      .stat-number {
+        font-size: 36px;
+        font-weight: 900;
+        color: #00d4ff;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 14px;
+        color: #a0d0e0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+      }
+
       @media (max-width: 768px) {
         .welcome-title {
           font-size: 48px;
@@ -540,6 +913,19 @@
     </style>
   </head>
   <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-logo">
+        <img src="kominfo.jpg" alt="KOMINFO Logo" />
+      </div>
+      <div class="loading-text">KOMINFO PMKN</div>
+      <div class="loading-dots">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+      </div>
+    </div>
+
     <!-- Animated Background Elements -->
     <div
       class="floating-element"
@@ -644,6 +1030,131 @@
       </div>
     </div>
 
+    <!-- Video Section -->
+    <div class="video-section">
+      <h2>Tentang KOMINFO PMKN</h2>
+      <a
+        href="https://youtu.be/Zn9VKco1-80?si=9MUnNWupLpLdBMVC"
+        target="_blank"
+        class="video-container"
+      >
+        <div
+          class="video-thumbnail"
+          style="
+            background-image: url(&quot;https://img.youtube.com/vi/Zn9VKco1-80/maxresdefault.jpg&quot;);
+          "
+        >
+          <div class="play-button"></div>
+        </div>
+      </a>
+      <div class="video-description">
+        🎬 Tonton video pengenalan resmi Persatuan Mahasiswa Kristen Nias PMKN -
+        Tondano. Pelajari lebih lanjut tentang organisasi kami, misi, dan
+        inisiatif yang kami jalankan untuk mendukung program PMKN. Klik Tombol
+        di samping untuk membuka video di YouTube.
+      </div>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div class="quick-links-section">
+      <h2>⚡ Akses Cepat</h2>
+      <ul class="quick-links-list">
+        <li class="quick-link-item">
+          <a href="project.html">
+            <span class="quick-link-icon">📊</span>
+            <div class="quick-link-text">
+              <span class="quick-link-title">Project</span>
+              <span class="quick-link-description">Lihat semua proyek</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="quick-link-item">
+          <a href="upload.html">
+            <span class="quick-link-icon">📤</span>
+            <div class="quick-link-text">
+              <span class="quick-link-title">Upload</span>
+              <span class="quick-link-description">Kelola file proyek</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="quick-link-item">
+          <a href="partners.html">
+            <span class="quick-link-icon">🤝</span>
+            <div class="quick-link-text">
+              <span class="quick-link-title">Partners</span>
+              <span class="quick-link-description">Anggota KOMINFO</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="quick-link-item">
+          <a href="about.html">
+            <span class="quick-link-icon">ℹ️</span>
+            <div class="quick-link-text">
+              <span class="quick-link-title">About Us</span>
+              <span class="quick-link-description">Tentang KOMINFO</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="quick-link-item">
+          <a href="work-program.html">
+            <span class="quick-link-icon">📋</span>
+            <div class="quick-link-text">
+              <span class="quick-link-title">Program Kerja</span>
+              <span class="quick-link-description">Jadwal & timeline</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Visitor Stats Section -->
+    <div class="visitor-stats-section">
+      <div class="stats-title">📊 Statistik Kunjungan</div>
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-icon">🔄</div>
+          <div class="stat-number" id="todayVisits">0</div>
+          <div class="stat-label">Kunjungan Hari Ini</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number" id="onlineVisitors">0</div>
+          <div class="stat-label">Pengunjung Online</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="stat-icon">📈</div>
+          <div class="stat-number" id="totalVisits">0</div>
+          <div class="stat-label">Total Kunjungan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Info Section -->
+    <div class="contact-info-section">
+      <h3>📞 Hubungi Kami</h3>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <span
+          >Jl. UNIMA-Remboken No.11, Tataaran Patar, Kec. Tondano Sel.,
+          Kabupaten Minahasa, Sulawesi Utara</span
+        >
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <a href="pmkntondano@gmail.com">pmkntondano@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📱</span>
+        <a href="tel:+62 823-6220-3045">+62 823-6220-3045</a>
+      </div>
+    </div>
+
     <script>
       // Hamburger Menu Toggle
       const menuToggle = document.getElementById("menuToggle");
@@ -671,6 +1182,52 @@
         ) {
           menuToggle.classList.remove("active");
           menu.classList.remove("active");
+        }
+      });
+
+      // Visitor Stats Counter
+      function updateVisitorStats() {
+        const today = new Date().toDateString();
+        let stats = JSON.parse(localStorage.getItem("visitorStats")) || {
+          lastDate: today,
+          todayVisits: 0,
+          totalVisits: 0,
+          onlineVisitors: Math.floor(Math.random() * 50) + 10,
+        };
+
+        // Reset today's count if it's a new day
+        if (stats.lastDate !== today) {
+          stats.lastDate = today;
+          stats.todayVisits = 0;
+        }
+
+        // Increment counters
+        stats.todayVisits++;
+        stats.totalVisits++;
+        stats.onlineVisitors = Math.floor(Math.random() * 50) + 10;
+
+        // Save to localStorage
+        localStorage.setItem("visitorStats", JSON.stringify(stats));
+
+        // Update the display
+        document.getElementById("todayVisits").textContent =
+          stats.todayVisits.toLocaleString();
+        document.getElementById("totalVisits").textContent =
+          stats.totalVisits.toLocaleString();
+        document.getElementById("onlineVisitors").textContent =
+          stats.onlineVisitors.toLocaleString();
+      }
+
+      // Initialize on page load
+      window.addEventListener("load", updateVisitorStats);
+
+      // Loading Screen Animation
+      window.addEventListener("load", function () {
+        const loadingScreen = document.getElementById("loadingScreen");
+        if (loadingScreen) {
+          setTimeout(function () {
+            loadingScreen.classList.add("hidden");
+          }, 500);
         }
       });
     </script>
