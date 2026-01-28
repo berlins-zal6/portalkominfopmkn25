@@ -294,6 +294,162 @@
         font-size: 20px;
       }
 
+      .download-section {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.15),
+          rgba(0, 212, 255, 0.08)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        border-radius: 15px;
+        padding: 40px;
+        margin: 50px 0;
+        text-align: center;
+        animation: floatIn 1s ease-out;
+      }
+
+      .download-section h2 {
+        font-size: 28px;
+        color: #00d4ff;
+        margin-bottom: 15px;
+        font-weight: 800;
+      }
+
+      .download-section p {
+        font-size: 16px;
+        color: #b0e0e6;
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      .download-btn {
+        display: inline-block;
+        padding: 18px 50px;
+        background: linear-gradient(135deg, #1ba7e2, #00d4ff);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        cursor: pointer;
+        border: none;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 8px 24px rgba(26, 167, 226, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .download-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2);
+        transition: left 0.5s ease;
+        z-index: -1;
+      }
+
+      .download-btn:hover::before {
+        left: 0;
+      }
+
+      .download-btn:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow:
+          0 16px 40px rgba(26, 167, 226, 0.6),
+          0 0 20px rgba(0, 212, 255, 0.4);
+      }
+
+      .download-btn:active {
+        transform: translateY(-1px) scale(1.02);
+      }
+
+      .download-btn-icon {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .compilation-message {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.2),
+          rgba(0, 212, 255, 0.1)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.5);
+        border-radius: 15px;
+        padding: 50px;
+        margin: 40px 0;
+        text-align: center;
+        animation: floatIn 0.8s ease-out;
+      }
+
+      .compilation-icon {
+        font-size: 60px;
+        margin-bottom: 20px;
+        display: inline-block;
+        animation: spin 3s linear infinite;
+      }
+
+      .compilation-message h3 {
+        font-size: 28px;
+        color: #00d4ff;
+        margin-bottom: 15px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      .compilation-message p {
+        font-size: 16px;
+        color: #b0e0e6;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .dots-loader {
+        display: inline-block;
+        margin-left: 5px;
+      }
+
+      .dots-loader span {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #00d4ff;
+        margin: 0 4px;
+        animation: pulse 1.4s infinite;
+      }
+
+      .dots-loader span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .dots-loader span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
       .floating-element {
         position: fixed;
         border-radius: 50%;
@@ -334,22 +490,58 @@
           right: 20px;
           flex-direction: column;
           gap: 0;
-          background: rgba(15, 30, 50, 0.98);
-          border-radius: 10px;
-          padding: 10px 0;
-          min-width: 200px;
-          box-shadow: 0 8px 32px rgba(26, 167, 226, 0.2);
+          background: linear-gradient(
+            135deg,
+            rgba(15, 30, 50, 0.98),
+            rgba(15, 40, 70, 0.95)
+          );
+          border: 2px solid rgba(26, 167, 226, 0.4);
+          border-radius: 12px;
+          padding: 8px 0;
+          min-width: 220px;
+          box-shadow: 0 12px 40px rgba(26, 167, 226, 0.3);
+          backdrop-filter: blur(10px);
+          animation: floatIn 0.3s ease-out;
         }
 
         .menu.active {
           display: flex;
         }
 
+        .menu li {
+          border-bottom: 1px solid rgba(26, 167, 226, 0.2);
+          transition: all 0.2s ease;
+        }
+
+        .menu li:last-child {
+          border-bottom: none;
+        }
+
+        .menu li:hover {
+          background: rgba(26, 167, 226, 0.1);
+        }
+
         .menu a {
-          padding: 12px 20px;
+          padding: 14px 20px;
           border-radius: 0;
           width: 100%;
           text-align: left;
+          font-size: 15px;
+          display: block;
+          transition: all 0.2s ease;
+        }
+
+        .menu a:hover {
+          padding-left: 25px;
+          background: rgba(26, 167, 226, 0.15);
+          color: #00d4ff;
+        }
+
+        .menu a.active {
+          background-color: rgba(26, 167, 226, 0.3);
+          color: #00d4ff;
+          border-left: 4px solid #00d4ff;
+          padding-left: 16px;
         }
 
         .menu-toggle {
@@ -429,79 +621,47 @@
     <div class="content">
       <a href="project.html" class="back-link">Back to Project</a>
 
-      <h1 class="page-title">Work Program</h1>
+      <h1 class="page-title">Program Kerja</h1>
       <div class="content-text">
         <p>
-          Here is the detailed work program for KOMINFO PMKN 2025. This timeline
-          outlines all the scheduled activities and milestones for the program.
+          Berikut adalah program terperinci untuk KOMINFO PMKN 2025. Ini semua
+          menguraikan semua kegiatan dan tonggak penting yang direncanakan untuk
+          memastikan keberhasilan program ini.
         </p>
       </div>
 
-      <!-- Timeline Section -->
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="timeline-date">📅 January 2025</span>
-          <div class="timeline-title">Program Kickoff</div>
-          <div class="timeline-description">
-            Launch of KOMINFO PMKN 2025 program with introductory sessions and
-            registration.
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-date">📅 February 2025</span>
-          <div class="timeline-title">Training & Orientation</div>
-          <div class="timeline-description">
-            Comprehensive training sessions for all participants covering
-            program guidelines and objectives.
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-date">📅 March - April 2025</span>
-          <div class="timeline-title">Project Implementation</div>
-          <div class="timeline-description">
-            Active phase of project development and implementation with regular
-            progress monitoring.
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-date">📅 May 2025</span>
-          <div class="timeline-title">Mid-term Review</div>
-          <div class="timeline-description">
-            Evaluation of progress, feedback collection, and adjustment of
-            strategies as needed.
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-date">📅 June - August 2025</span>
-          <div class="timeline-title">Continuation & Refinement</div>
-          <div class="timeline-description">
-            Continued implementation with focus on quality improvement and
-            addressing feedback.
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-date">📅 September 2025</span>
-          <div class="timeline-title">Final Preparation</div>
-          <div class="timeline-description">
-            Preparation of final deliverables and documentation for program
-            conclusion.
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <span class="timeline-date">📅 October 2025</span>
-          <div class="timeline-title">Program Completion</div>
-          <div class="timeline-description">
-            Final evaluation, reporting, and closure of KOMINFO PMKN 2025
-            program.
-          </div>
-        </div>
+      <!-- Download Kominfo Work Program Section -->
+      <div class="download-section">
+        <h2>📋 Unduh Program Kerja KOMINFO</h2>
+        <p>
+          Dapatkan dokumen lengkap program kerja KOMINFO PMKN dengan rincian
+          keseluruhan aktivitas dan timeline yang telah ditetapkan.
+        </p>
+        <p>
+          Program masih dalam proses, mohon tunggu...
+          <span class="dots-loader"
+            ><span></span><span></span><span></span
+          ></span>
+        </p>
+        <a href="Program Kominfo PMKN25-26.pdf" download class="download-btn">
+          <span class="download-btn-icon">⬇️</span>Download
+        </a>
       </div>
+
+      <!-- Download Section -->
+      <div class="download-section">
+        <h2>📥Data Anggota PMKN</h2>
+        <p>
+          Dapatkan daftar lengkap seluruh anggota PMKN dalam format yang mudah
+          digunakan untuk referensi Anda.
+        </p>
+        <a href="nama-nama anggota PMKN.pdf" download class="download-btn">
+          <span class="download-btn-icon">⬇️</span>Download
+        </a>
+      </div>
+
+      <!-- Timeline Section -->
+      <div class="timeline"></div>
     </div>
 
     <script>
