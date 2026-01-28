@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="kominfo.jpg" type="image/png" />
-    <title>Partners - KOMINFO PMKN 2025</title>
+    <title>Program Kerja - KOMINFO PMKN 2025</title>
     <style>
       * {
         margin: 0;
@@ -218,15 +218,20 @@
         border-radius: 8px;
       }
 
-      .members-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-        animation: floatIn 1s ease-out 0.3s both;
+      .section-title {
+        font-size: 32px;
+        font-weight: 800;
+        color: #1ba7e2;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
       }
 
-      .member-card {
+      .timeline {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .timeline-item {
         background: linear-gradient(
           135deg,
           rgba(26, 167, 226, 0.15),
@@ -234,67 +239,59 @@
         );
         border: 2px solid rgba(26, 167, 226, 0.4);
         border-radius: 15px;
-        overflow: hidden;
+        padding: 30px;
+        margin-bottom: 30px;
         transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        box-shadow: 0 8px 32px rgba(26, 167, 226, 0.1);
       }
 
-      .member-card:hover {
-        transform: translateY(-10px);
+      .timeline-item:hover {
+        transform: translateX(10px);
         box-shadow: 0 16px 48px rgba(26, 167, 226, 0.25);
         border-color: rgba(0, 212, 255, 0.6);
       }
 
-      .member-photo {
-        width: 100%;
-        height: 280px;
-        object-fit: cover;
-        border-bottom: 2px solid rgba(26, 167, 226, 0.3);
-      }
-
-      .member-info {
-        padding: 25px;
-      }
-
-      .member-name {
-        font-size: 22px;
-        font-weight: 800;
-        color: #00d4ff;
-        margin-bottom: 8px;
-        letter-spacing: 0.5px;
-      }
-
-      .member-position {
+      .timeline-date {
         font-size: 14px;
         color: #1ba7e2;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        margin-bottom: 15px;
         letter-spacing: 1px;
+        margin-bottom: 8px;
+        display: block;
       }
 
-      .member-details {
-        font-size: 14px;
+      .timeline-title {
+        font-size: 24px;
+        color: #00d4ff;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      .timeline-description {
+        font-size: 16px;
         color: #b0e0e6;
-        line-height: 1.8;
+        line-height: 1.6;
       }
 
-      .member-detail-item {
-        margin-bottom: 10px;
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .member-detail-label {
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        color: #00d4ff;
+        text-decoration: none;
         font-weight: 600;
-        color: #1ba7e2;
-        min-width: 80px;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
       }
 
-      .member-detail-value {
-        color: #b0e0e6;
-        word-break: break-word;
+      .back-link:hover {
+        color: #1ba7e2;
+        transform: translateX(-5px);
+      }
+
+      .back-link::before {
+        content: "←";
+        margin-right: 8px;
+        font-size: 20px;
       }
 
       .floating-element {
@@ -316,43 +313,6 @@
       }
 
       @media (max-width: 768px) {
-        .menu-toggle {
-          display: flex;
-        }
-
-        .menu {
-          position: absolute;
-          top: 80px;
-          left: 0;
-          width: 100%;
-          flex-direction: column;
-          background: rgba(15, 30, 50, 0.98);
-          backdrop-filter: blur(10px);
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.3s ease;
-          gap: 0;
-          border-bottom: 2px solid rgba(26, 167, 226, 0.3);
-          z-index: 999;
-        }
-
-        .menu.active {
-          max-height: 300px;
-        }
-
-        .menu li {
-          width: 100%;
-          border-bottom: 1px solid rgba(26, 167, 226, 0.2);
-        }
-
-        .menu a {
-          display: block;
-          padding: 15px 20px;
-          border-radius: 0;
-          width: 100%;
-          text-align: left;
-        }
-
         .header {
           padding: 15px 20px;
         }
@@ -361,21 +321,49 @@
           font-size: 20px;
         }
 
-        body {
-          padding-top: 70px;
+        .logo {
+          height: 45px;
+          width: 45px;
+          margin-right: 10px;
+        }
+
+        .menu {
+          display: none;
+          position: absolute;
+          top: 70px;
+          right: 20px;
+          flex-direction: column;
+          gap: 0;
+          background: rgba(15, 30, 50, 0.98);
+          border-radius: 10px;
+          padding: 10px 0;
+          min-width: 200px;
+          box-shadow: 0 8px 32px rgba(26, 167, 226, 0.2);
+        }
+
+        .menu.active {
+          display: flex;
+        }
+
+        .menu a {
+          padding: 12px 20px;
+          border-radius: 0;
+          width: 100%;
+          text-align: left;
+        }
+
+        .menu-toggle {
+          display: flex;
         }
 
         .content {
-          padding: 20px;
           margin: 40px auto;
+          padding: 20px;
         }
 
         .page-title {
           font-size: 36px;
-        }
-
-        .content-text {
-          font-size: 16px;
+          margin-bottom: 20px;
         }
       }
     </style>
@@ -429,9 +417,9 @@
         </button>
         <ul class="menu" id="menu">
           <li><a href="index.html">Home</a></li>
-          <li><a href="project.html">Project</a></li>
+          <li><a href="project.html" class="active">Project</a></li>
           <li><a href="upload.html">Upload</a></li>
-          <li><a href="partners.html" class="active">Partners</a></li>
+          <li><a href="partners.html">Partners</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </div>
@@ -439,157 +427,78 @@
 
     <!-- Content Section -->
     <div class="content">
-      <h1 class="page-title">Partner Kominfo</h1>
+      <a href="project.html" class="back-link">Back to Project</a>
+
+      <h1 class="page-title">Work Program</h1>
       <div class="content-text">
         <p>
-          Kami bekerja dengan jaringan mitra dan organisasi yang beragam untuk
-          mendukung inisiatif PMKN 2025. Kolaborator kami membawa keahlian,
-          sumber daya, dan komitmen berharga untuk menjadikan acara ini sukses.
-        </p>
-        <p style="margin-top: 15px">
-          Melalui kemitraan strategis, kami memastikan bahwa semua peserta
-          memiliki akses ke sumber daya terbaik, panduan, dan dukungan sepanjang
-          program. Kami berterima kasih atas dukungan terus-menerus dari mitra
-          terpercaya kami.
+          Here is the detailed work program for KOMINFO PMKN 2025. This timeline
+          outlines all the scheduled activities and milestones for the program.
         </p>
       </div>
 
-      <div class="members-grid">
-        <!-- Member 1 -->
-        <div class="member-card">
-          <img src="kominfo.jpg" alt="" class="member-photo" />
-          <div class="member-info">
-            <div class="member-name">Jestin Jernih Wati Ziliwu</div>
-            <div class="member-position">Koor. KOMINFO</div>
-            <div class="member-details">
-              <div class="member-detail-item">
-                <span class="member-detail-label">Email:</span>
-                <span class="member-detail-value">-</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Phone:</span>
-                <span class="member-detail-value">+62 822-1308-6969</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Major:</span>
-                <span class="member-detail-value">PTIK</span>
-              </div>
-            </div>
+      <!-- Timeline Section -->
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-date">📅 January 2025</span>
+          <div class="timeline-title">Program Kickoff</div>
+          <div class="timeline-description">
+            Launch of KOMINFO PMKN 2025 program with introductory sessions and
+            registration.
           </div>
         </div>
 
-        <!-- Member 2 -->
-        <div class="member-card">
-          <img src="kominfoberlin.jpeg" alt="" class="member-photo" />
-          <div class="member-info">
-            <div class="member-name">Berlin Septenus Zalukhu</div>
-            <div class="member-position">Angt. KOMINFO</div>
-            <div class="member-details">
-              <div class="member-detail-item">
-                <span class="member-detail-label">Email:</span>
-                <span class="member-detail-value">berlinsepzal6@gmail.com</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Phone:</span>
-                <span class="member-detail-value">+62 823-5847-8663</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Major:</span>
-                <span class="member-detail-value">PTIK</span>
-              </div>
-            </div>
+        <div class="timeline-item">
+          <span class="timeline-date">📅 February 2025</span>
+          <div class="timeline-title">Training & Orientation</div>
+          <div class="timeline-description">
+            Comprehensive training sessions for all participants covering
+            program guidelines and objectives.
           </div>
         </div>
 
-        <!-- Member 3 -->
-        <div class="member-card">
-          <img src="kominfo.jpg" alt="" class="member-photo" />
-          <div class="member-info">
-            <div class="member-name">Helena Reni Oktora Lase</div>
-            <div class="member-position">Angt. KOMINFO</div>
-            <div class="member-details">
-              <div class="member-detail-item">
-                <span class="member-detail-label">Email:</span>
-                <span class="member-detail-value">-</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Phone:</span>
-                <span class="member-detail-value">+62 813-1996-9469</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Major:</span>
-                <span class="member-detail-value">BK</span>
-              </div>
-            </div>
+        <div class="timeline-item">
+          <span class="timeline-date">📅 March - April 2025</span>
+          <div class="timeline-title">Project Implementation</div>
+          <div class="timeline-description">
+            Active phase of project development and implementation with regular
+            progress monitoring.
           </div>
         </div>
 
-        <!-- Member 4 -->
-        <div class="member-card">
-          <img src="kominfo.jpg" alt="" class="member-photo" />
-          <div class="member-info">
-            <div class="member-name">Wan Ceria Putra Telaumbanua</div>
-            <div class="member-position">Angt. KOMINFO</div>
-            <div class="member-details">
-              <div class="member-detail-item">
-                <span class="member-detail-label">Email:</span>
-                <span class="member-detail-value">-</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Phone:</span>
-                <span class="member-detail-value">+62 822-7208-1267</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Major:</span>
-                <span class="member-detail-value">P. Sejarah</span>
-              </div>
-            </div>
+        <div class="timeline-item">
+          <span class="timeline-date">📅 May 2025</span>
+          <div class="timeline-title">Mid-term Review</div>
+          <div class="timeline-description">
+            Evaluation of progress, feedback collection, and adjustment of
+            strategies as needed.
           </div>
         </div>
 
-        <!-- Member 5 -->
-        <div class="member-card">
-          <img src="kominfo.jpg" alt="" class="member-photo" />
-          <div class="member-info">
-            <div class="member-name">Erna Enjelika Daeli</div>
-            <div class="member-position">Angt. KOMINFO</div>
-            <div class="member-details">
-              <div class="member-detail-item">
-                <span class="member-detail-label">Email:</span>
-                <span class="member-detail-value">-</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Phone:</span>
-                <span class="member-detail-value">+62 822-6899-1330</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Major:</span>
-                <span class="member-detail-value">TI</span>
-              </div>
-            </div>
+        <div class="timeline-item">
+          <span class="timeline-date">📅 June - August 2025</span>
+          <div class="timeline-title">Continuation & Refinement</div>
+          <div class="timeline-description">
+            Continued implementation with focus on quality improvement and
+            addressing feedback.
           </div>
         </div>
 
-        <!-- Member 6 -->
-        <div class="member-card">
-          <img src="kominfo.jpg" alt="" class="member-photo" />
-          <div class="member-info">
-            <div class="member-name">Welisman Telaumbanua</div>
-            <div class="member-position">Angt. KOMINFO</div>
-            <div class="member-details">
-              <div class="member-detail-item">
-                <span class="member-detail-label">Email:</span>
-                <span class="member-detail-value">-</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Phone:</span>
-                <span class="member-detail-value">+62 823-4019-3810</span>
-              </div>
-              <div class="member-detail-item">
-                <span class="member-detail-label">Major:</span>
-                <span class="member-detail-value">-</span>
-              </div>
-            </div>
+        <div class="timeline-item">
+          <span class="timeline-date">📅 September 2025</span>
+          <div class="timeline-title">Final Preparation</div>
+          <div class="timeline-description">
+            Preparation of final deliverables and documentation for program
+            conclusion.
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <span class="timeline-date">📅 October 2025</span>
+          <div class="timeline-title">Program Completion</div>
+          <div class="timeline-description">
+            Final evaluation, reporting, and closure of KOMINFO PMKN 2025
+            program.
           </div>
         </div>
       </div>

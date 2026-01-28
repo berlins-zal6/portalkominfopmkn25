@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="kominfo.jpg" type="image/png" />
+    <title>Project Link - KOMINFO PMKN 2025</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow:
+            0 0 10px rgba(26, 167, 226, 0.5),
+            0 0 20px rgba(26, 167, 226, 0.3);
+        }
+        50% {
+          text-shadow:
+            0 0 20px rgba(26, 167, 226, 0.8),
+            0 0 40px rgba(26, 167, 226, 0.5);
+        }
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(-45deg, #0a0e27, #1a1a3e, #16213e, #0f3460);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        min-height: 100vh;
+        overflow-x: hidden;
+        color: #fff;
+        padding-top: 80px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background: rgba(15, 30, 50, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 8px 32px 0 rgba(26, 167, 226, 0.2);
+        border-bottom: 2px solid rgba(26, 167, 226, 0.3);
+      }
+
+      .header-left {
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        cursor: pointer;
+        animation: glow 3s ease-in-out infinite;
+        color: #1ba7e2;
+      }
+
+      .logo {
+        height: 55px;
+        width: 55px;
+        margin-right: 15px;
+        border-radius: 50%;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 0 20px rgba(26, 167, 226, 0.4);
+        border: 2px solid rgba(26, 167, 226, 0.5);
+        object-fit: cover;
+      }
+
+      .logo:hover {
+        transform: scale(1.15) rotate(5deg);
+        box-shadow: 0 0 40px rgba(26, 167, 226, 0.8);
+        border-color: rgba(26, 167, 226, 0.8);
+      }
+
+      .header-left:hover {
+        color: #00d4ff;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        background: none;
+        border: none;
+        padding: 10px;
+      }
+
+      .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: #1ba7e2;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+      }
+
+      .menu {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+      }
+
+      .menu a {
+        color: #e0e0e0;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .menu a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(26, 167, 226, 0.3);
+        transition: left 0.3s ease;
+        z-index: -1;
+      }
+
+      .menu a:hover::before {
+        left: 0;
+      }
+
+      .menu a:hover {
+        color: #00d4ff;
+        transform: translateY(-2px);
+      }
+
+      .menu a.active {
+        background-color: rgba(26, 167, 226, 0.5);
+        color: #00d4ff;
+      }
+
+      .content {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 40px;
+        animation: floatIn 0.8s ease-out;
+      }
+
+      .page-title {
+        font-size: 56px;
+        font-weight: 900;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2, #00d4ff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: glow 4s ease-in-out infinite;
+        letter-spacing: 2px;
+      }
+
+      .content-text {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #b0e0e6;
+        margin-bottom: 40px;
+        padding: 20px;
+        border-left: 4px solid rgba(26, 167, 226, 0.5);
+        background: rgba(26, 167, 226, 0.05);
+        border-radius: 8px;
+      }
+
+      .form-container {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.15),
+          rgba(0, 212, 255, 0.08)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        border-radius: 15px;
+        padding: 35px;
+        margin-bottom: 50px;
+        max-width: 600px;
+      }
+
+      .form-container h2 {
+        font-size: 28px;
+        font-weight: 800;
+        color: #00d4ff;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1ba7e2;
+        letter-spacing: 0.5px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        border-radius: 8px;
+        background: rgba(15, 30, 50, 0.7);
+        color: #fff;
+        font-size: 16px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #00d4ff;
+        box-shadow: 0 0 15px rgba(26, 167, 226, 0.4);
+        background: rgba(15, 30, 50, 0.9);
+      }
+
+      .form-group input::placeholder {
+        color: rgba(176, 224, 230, 0.6);
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 14px 24px;
+        background: linear-gradient(135deg, #1ba7e2, #00d4ff);
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 10px 30px rgba(26, 167, 226, 0.3);
+        text-transform: uppercase;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(26, 167, 226, 0.5);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .form-message {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        display: none;
+      }
+
+      .form-message.success {
+        background: rgba(0, 255, 100, 0.2);
+        border: 2px solid rgba(0, 255, 100, 0.5);
+        color: #00ff64;
+      }
+
+      .form-message.error {
+        background: rgba(255, 100, 100, 0.2);
+        border: 2px solid rgba(255, 100, 100, 0.5);
+        color: #ff6464;
+      }
+
+      .results-container {
+        margin-top: 50px;
+        padding-top: 40px;
+        border-top: 2px solid rgba(26, 167, 226, 0.3);
+      }
+
+      .results-title {
+        font-size: 28px;
+        font-weight: 800;
+        color: #00d4ff;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+      }
+
+      .results-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .result-card {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.15),
+          rgba(26, 167, 226, 0.08)
+        );
+        border: 2px solid rgba(0, 212, 255, 0.5);
+        border-radius: 12px;
+        padding: 25px;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .result-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 50px rgba(0, 212, 255, 0.3);
+      }
+
+      .result-card .result-icon {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        opacity: 0.7;
+      }
+
+      .result-card .result-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #00d4ff;
+        margin-bottom: 12px;
+        word-break: break-word;
+      }
+
+      .result-card .result-link {
+        font-size: 14px;
+        color: #b0e0e6;
+        word-break: break-all;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .result-card .result-link a {
+        color: #1ba7e2;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .result-card .result-link a:hover {
+        color: #00d4ff;
+        text-decoration: underline;
+      }
+
+      .result-card .delete-btn {
+        width: 100%;
+        padding: 8px 12px;
+        background: rgba(255, 100, 100, 0.2);
+        border: 1px solid rgba(255, 100, 100, 0.5);
+        border-radius: 6px;
+        color: #ff6464;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .result-card .delete-btn:hover {
+        background: rgba(255, 100, 100, 0.4);
+        border-color: rgba(255, 100, 100, 0.8);
+      }
+
+      .empty-results {
+        text-align: center;
+        padding: 40px 20px;
+        color: rgba(176, 224, 230, 0.6);
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 32px;
+        font-weight: 800;
+        color: #1ba7e2;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+      }
+
+      .link-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+      }
+
+      .link-card {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.15),
+          rgba(0, 212, 255, 0.08)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        border-radius: 15px;
+        padding: 30px;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .link-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(26, 167, 226, 0.35);
+        border-color: rgba(0, 212, 255, 0.8);
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.25),
+          rgba(0, 212, 255, 0.15)
+        );
+      }
+
+      .link-icon {
+        font-size: 36px;
+        margin-bottom: 12px;
+      }
+
+      .link-title {
+        font-size: 22px;
+        font-weight: 800;
+        color: #00d4ff;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+      }
+
+      .link-description {
+        font-size: 14px;
+        color: #b0e0e6;
+        line-height: 1.6;
+        margin-bottom: 18px;
+      }
+
+      .link-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #1ba7e2, #00d4ff);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .link-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(26, 167, 226, 0.4);
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        color: #00d4ff;
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .back-link:hover {
+        color: #1ba7e2;
+        transform: translateX(-5px);
+      }
+
+      .back-link::before {
+        content: "←";
+        margin-right: 8px;
+        font-size: 20px;
+      }
+
+      .floating-element {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0.05;
+        pointer-events: none;
+        animation: float 8s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        50% {
+          transform: translateY(-30px) translateX(20px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          padding: 15px 20px;
+        }
+
+        .header-left {
+          font-size: 20px;
+        }
+
+        .logo {
+          height: 45px;
+          width: 45px;
+          margin-right: 10px;
+        }
+
+        .menu {
+          display: none;
+          position: absolute;
+          top: 70px;
+          right: 20px;
+          flex-direction: column;
+          gap: 0;
+          background: rgba(15, 30, 50, 0.98);
+          border-radius: 10px;
+          padding: 10px 0;
+          min-width: 200px;
+          box-shadow: 0 8px 32px rgba(26, 167, 226, 0.2);
+        }
+
+        .menu.active {
+          display: flex;
+        }
+
+        .menu a {
+          padding: 12px 20px;
+          border-radius: 0;
+          width: 100%;
+          text-align: left;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+
+        .content {
+          margin: 40px auto;
+          padding: 20px;
+        }
+
+        .page-title {
+          font-size: 36px;
+          margin-bottom: 20px;
+        }
+
+        .link-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Animated Background Elements -->
+    <div
+      class="floating-element"
+      style="
+        width: 300px;
+        height: 300px;
+        background: #1ba7e2;
+        top: 10%;
+        left: 10%;
+      "
+    ></div>
+    <div
+      class="floating-element"
+      style="
+        width: 200px;
+        height: 200px;
+        background: #00d4ff;
+        top: 60%;
+        right: 5%;
+        animation-delay: 2s;
+      "
+    ></div>
+    <div
+      class="floating-element"
+      style="
+        width: 250px;
+        height: 250px;
+        background: #0f3460;
+        bottom: 10%;
+        left: 30%;
+        animation-delay: 4s;
+      "
+    ></div>
+
+    <!-- Header Navigation -->
+    <div class="header">
+      <div class="header-left">
+        <img src="kominfo.jpg" alt="Logo" class="logo" />
+        KOMINFO PMKN
+      </div>
+      <div class="header-right">
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="menu" id="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="project.html" class="active">Project</a></li>
+          <li><a href="upload.html">Upload</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <a href="project.html" class="back-link">Back to Project</a>
+
+      <h1 class="page-title">Project Links</h1>
+      <div class="content-text">
+        <p>Akses sumber daya, alat, dan tautan eksternal penting terkait KOMINFO PMKN 2025. Semua tautan di bawah ini menyediakan informasi dan layanan berharga bagi peserta dan pemangku kepentingan.</p>
+        </p>
+      </div>
+
+      <!-- Form Section -->
+      <div class="form-container">
+        <h2>Add a New Link</h2>
+        <form id="linkForm">
+          <div class="form-group">
+            <label for="linkName">Link Name</label>
+            <input
+              type="text"
+              id="linkName"
+              name="linkName"
+              placeholder="Enter the name of the link"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="linkUrl">Link URL</label>
+            <input
+              type="url"
+              id="linkUrl"
+              name="linkUrl"
+              placeholder="Enter the link URL (e.g., https://example.com)"
+              required
+            />
+          </div>
+          <button type="submit" class="submit-btn">Add Link</button>
+          <div id="formMessage" class="form-message"></div>
+        </form>
+      </div>
+
+      <!-- Results Section -->
+      <div class="results-container">
+        <h2 class="results-title">Submitted Links</h2>
+        <div class="results-list" id="resultsList">
+          <div class="empty-results">
+            No links added yet. Fill in the form above to add a new link!
+          </div>
+        </div>
+      </div>
+
+      <!-- Links Section -->
+      <div class="link-container">
+        <!-- Upload Portal -->
+        <div class="link-card">
+          <div class="link-icon">📤</div>
+          <div class="link-title">Upload Portal</div>
+          <div class="link-description">
+            Submit and manage your project files and deliverables
+          </div>
+          <a href="upload.html" class="link-button">Go to Portal →</a>
+        </div>
+
+        <!-- Social Media -->
+        <div class="link-card">
+          <div class="link-icon">📱</div>
+          <div class="link-title">Social Media</div>
+          <div class="link-description">
+            Follow us on social media for updates and announcements
+          </div>
+          <a href="about.html#social" class="link-button">Learn More →</a>
+        </div>
+
+        <!-- FAQ -->
+        <div class="link-card">
+          <div class="link-icon">❓</div>
+          <div class="link-title">FAQ</div>
+          <div class="link-description">
+            Find answers to frequently asked questions about the program
+          </div>
+          <a href="#" class="link-button">Read FAQ →</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Hamburger Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const menu = document.getElementById("menu");
+
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        menu.classList.toggle("active");
+      });
+
+      // Close menu when a link is clicked
+      const menuLinks = menu.querySelectorAll("a");
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          menu.classList.remove("active");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          !e.target.closest(".header-right") &&
+          !e.target.closest(".header-left")
+        ) {
+          menuToggle.classList.remove("active");
+          menu.classList.remove("active");
+        }
+      });
+
+      // Form Submission Handler
+      const linkForm = document.getElementById("linkForm");
+      const formMessage = document.getElementById("formMessage");
+      const resultsList = document.getElementById("resultsList");
+      let submittedLinks =
+        JSON.parse(localStorage.getItem("submittedLinks")) || [];
+
+      // Load existing links on page load
+      displayLinks();
+
+      linkForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const linkName = document.getElementById("linkName").value.trim();
+        const linkUrl = document.getElementById("linkUrl").value.trim();
+
+        if (!linkName || !linkUrl) {
+          showMessage("Please fill in all fields", "error");
+          return;
+        }
+
+        try {
+          new URL(linkUrl);
+
+          // Add the link to the array
+          submittedLinks.push({
+            id: Date.now(),
+            name: linkName,
+            url: linkUrl,
+          });
+
+          // Save to localStorage
+          localStorage.setItem(
+            "submittedLinks",
+            JSON.stringify(submittedLinks),
+          );
+
+          showMessage(`✓ Link "${linkName}" added successfully!`, "success");
+          linkForm.reset();
+          document.getElementById("linkName").focus();
+
+          // Display the links
+          displayLinks();
+        } catch (error) {
+          showMessage("Please enter a valid URL", "error");
+        }
+      });
+
+      function displayLinks() {
+        if (submittedLinks.length === 0) {
+          resultsList.innerHTML =
+            '<div class="empty-results">No links added yet. Fill in the form above to add a new link!</div>';
+          return;
+        }
+
+        resultsList.innerHTML = submittedLinks
+          .map(
+            (link) => `
+          <div class="result-card">
+            <div class="result-icon">🔗</div>
+            <div class="result-title">${escapeHtml(link.name)}</div>
+            <div class="result-link">
+              <a href="${escapeHtml(link.url)}" target="_blank">${escapeHtml(link.url)}</a>
+            </div>
+            <button class="delete-btn" onclick="deleteLink(${link.id})">Delete</button>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      function deleteLink(id) {
+        submittedLinks = submittedLinks.filter((link) => link.id !== id);
+        localStorage.setItem("submittedLinks", JSON.stringify(submittedLinks));
+        displayLinks();
+      }
+
+      function escapeHtml(text) {
+        const map = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;",
+        };
+        return text.replace(/[&<>"']/g, (m) => map[m]);
+      }
+
+      function showMessage(message, type) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message ${type}`;
+        formMessage.style.display = "block";
+
+        if (type === "success") {
+          setTimeout(() => {
+            formMessage.style.display = "none";
+          }, 3000);
+        }
+      }
+    </script>
+  </body>
+</html>
