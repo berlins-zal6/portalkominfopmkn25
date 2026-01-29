@@ -820,51 +820,203 @@
         text-decoration: underline;
       }
 
-      .visitor-stats-section {
-        max-width: 1000px;
-        margin: 100px auto;
-        padding: 50px 20px;
-        background: rgba(26, 167, 226, 0.05);
-        border: 1px solid rgba(26, 167, 226, 0.2);
-        border-radius: 10px;
+      /* Pamphlet Modal Styles */
+      .pamphlet-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.4s ease,
+          visibility 0.4s ease;
       }
 
-      .stats-title {
-        font-size: 24px;
-        font-weight: 800;
-        color: #1ba7e2;
+      .pamphlet-modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .pamphlet-content {
+        background: transparent;
+        border: none;
+        border-radius: 20px;
+        padding: 0;
+        max-width: 700px;
+        width: 90%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 25px 80px rgba(26, 167, 226, 0.4);
+        animation: zoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .pamphlet-brochure-image {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        display: block;
+        box-shadow: 0 15px 50px rgba(26, 167, 226, 0.3);
+        border: 3px solid rgba(26, 167, 226, 0.5);
+      }
+
+      .pamphlet-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(26, 167, 226, 0.8);
+        border: 2px solid rgba(26, 167, 226, 0.9);
+        color: #fff;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        font-size: 28px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        z-index: 10;
+      }
+
+      .pamphlet-close:hover {
+        background: rgba(26, 167, 226, 0.5);
+        border-color: rgba(0, 212, 255, 0.8);
+        color: #fff;
+        transform: rotate(90deg);
+      }
+
+      .pamphlet-header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
+        border-bottom: 2px solid rgba(26, 167, 226, 0.4);
+        padding-bottom: 20px;
       }
 
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 30px;
-      }
-
-      .stat-box {
-        text-align: center;
-      }
-
-      .stat-icon {
-        font-size: 40px;
-        margin-bottom: 12px;
-      }
-
-      .stat-number {
-        font-size: 36px;
+      .pamphlet-title {
+        font-size: 32px;
         font-weight: 900;
-        color: #00d4ff;
-        margin-bottom: 8px;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2, #00d4ff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
       }
 
-      .stat-label {
+      .pamphlet-subtitle {
         font-size: 14px;
         color: #a0d0e0;
         text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .pamphlet-section {
+        margin-bottom: 25px;
+      }
+
+      .pamphlet-section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #00d4ff;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .pamphlet-section-title::before {
+        content: "";
+        width: 4px;
+        height: 20px;
+        background: linear-gradient(180deg, #1ba7e2, #00d4ff);
+        border-radius: 2px;
+      }
+
+      .pamphlet-text {
+        font-size: 15px;
+        color: #b0e0e6;
+        line-height: 1.7;
+        margin-bottom: 15px;
+      }
+
+      .pamphlet-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .pamphlet-list li {
+        font-size: 14px;
+        color: #a8d0e0;
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .pamphlet-list li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #1ba7e2;
+        font-size: 18px;
+      }
+
+      .pamphlet-cta {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.2),
+          rgba(0, 212, 255, 0.1)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .pamphlet-cta-text {
+        font-size: 14px;
+        color: #a0d0e0;
+        margin-bottom: 15px;
+      }
+
+      .pamphlet-button {
+        padding: 12px 30px;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.3),
+          rgba(0, 212, 255, 0.2)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.6);
+        border-radius: 8px;
+        color: #00d4ff;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
         letter-spacing: 1px;
-        font-weight: 600;
+      }
+
+      .pamphlet-button:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.5),
+          rgba(0, 212, 255, 0.3)
+        );
+        border-color: rgba(0, 212, 255, 0.8);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(26, 167, 226, 0.3);
       }
 
       @media (max-width: 768px) {
@@ -923,6 +1075,18 @@
         <div class="loading-dot"></div>
         <div class="loading-dot"></div>
         <div class="loading-dot"></div>
+      </div>
+    </div>
+
+    <!-- Pamphlet Modal -->
+    <div class="pamphlet-modal" id="pamphletModal">
+      <div class="pamphlet-content">
+        <button class="pamphlet-close" onclick="closePamphlet()">×</button>
+        <img
+          src="ultah.jpeg"
+          alt="KOMINFO Brochure"
+          class="pamphlet-brochure-image"
+        />
       </div>
     </div>
 
@@ -1111,30 +1275,6 @@
       </ul>
     </div>
 
-    <!-- Visitor Stats Section -->
-    <div class="visitor-stats-section">
-      <div class="stats-title">📊 Statistik Kunjungan</div>
-      <div class="stats-grid">
-        <div class="stat-box">
-          <div class="stat-icon">🔄</div>
-          <div class="stat-number" id="todayVisits">0</div>
-          <div class="stat-label">Kunjungan Hari Ini</div>
-        </div>
-
-        <div class="stat-box">
-          <div class="stat-icon">👥</div>
-          <div class="stat-number" id="onlineVisitors">0</div>
-          <div class="stat-label">Pengunjung Online</div>
-        </div>
-
-        <div class="stat-box">
-          <div class="stat-icon">📈</div>
-          <div class="stat-number" id="totalVisits">0</div>
-          <div class="stat-label">Total Kunjungan</div>
-        </div>
-      </div>
-    </div>
-
     <!-- Contact Info Section -->
     <div class="contact-info-section">
       <h3>📞 Hubungi Kami</h3>
@@ -1185,42 +1325,6 @@
         }
       });
 
-      // Visitor Stats Counter
-      function updateVisitorStats() {
-        const today = new Date().toDateString();
-        let stats = JSON.parse(localStorage.getItem("visitorStats")) || {
-          lastDate: today,
-          todayVisits: 0,
-          totalVisits: 0,
-          onlineVisitors: Math.floor(Math.random() * 50) + 10,
-        };
-
-        // Reset today's count if it's a new day
-        if (stats.lastDate !== today) {
-          stats.lastDate = today;
-          stats.todayVisits = 0;
-        }
-
-        // Increment counters
-        stats.todayVisits++;
-        stats.totalVisits++;
-        stats.onlineVisitors = Math.floor(Math.random() * 50) + 10;
-
-        // Save to localStorage
-        localStorage.setItem("visitorStats", JSON.stringify(stats));
-
-        // Update the display
-        document.getElementById("todayVisits").textContent =
-          stats.todayVisits.toLocaleString();
-        document.getElementById("totalVisits").textContent =
-          stats.totalVisits.toLocaleString();
-        document.getElementById("onlineVisitors").textContent =
-          stats.onlineVisitors.toLocaleString();
-      }
-
-      // Initialize on page load
-      window.addEventListener("load", updateVisitorStats);
-
       // Loading Screen Animation
       window.addEventListener("load", function () {
         const loadingScreen = document.getElementById("loadingScreen");
@@ -1228,6 +1332,42 @@
           setTimeout(function () {
             loadingScreen.classList.add("hidden");
           }, 500);
+        }
+
+        // Show pamphlet modal after page loads
+        setTimeout(function () {
+          showPamphlet();
+        }, 1000);
+      });
+
+      // Pamphlet Modal Functions
+      function showPamphlet() {
+        const modal = document.getElementById("pamphletModal");
+        if (modal) {
+          modal.classList.add("active");
+        }
+      }
+
+      function closePamphlet() {
+        const modal = document.getElementById("pamphletModal");
+        if (modal) {
+          modal.classList.remove("active");
+        }
+      }
+
+      // Close pamphlet when clicking outside the content
+      document
+        .getElementById("pamphletModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closePamphlet();
+          }
+        });
+
+      // Close pamphlet with Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closePamphlet();
         }
       });
     </script>
