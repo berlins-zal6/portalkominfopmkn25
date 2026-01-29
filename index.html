@@ -1019,6 +1019,193 @@
         box-shadow: 0 8px 24px rgba(26, 167, 226, 0.3);
       }
 
+      /* Info Pamphlet Modal Styles */
+      .info-pamphlet-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.4s ease,
+          visibility 0.4s ease;
+      }
+
+      .info-pamphlet-modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .info-pamphlet-content {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.15),
+          rgba(0, 212, 255, 0.08)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.6);
+        border-radius: 20px;
+        padding: 50px 40px;
+        max-width: 650px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 25px 80px rgba(26, 167, 226, 0.4);
+        animation: zoomIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .info-pamphlet-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(26, 167, 226, 0.3);
+        border: 2px solid rgba(26, 167, 226, 0.6);
+        color: #00d4ff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      }
+
+      .info-pamphlet-close:hover {
+        background: rgba(26, 167, 226, 0.5);
+        border-color: rgba(0, 212, 255, 0.8);
+        color: #fff;
+        transform: rotate(90deg);
+      }
+
+      .info-pamphlet-header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px solid rgba(26, 167, 226, 0.4);
+        padding-bottom: 20px;
+      }
+
+      .info-pamphlet-title {
+        font-size: 32px;
+        font-weight: 900;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2, #00d4ff);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+      }
+
+      .info-pamphlet-subtitle {
+        font-size: 14px;
+        color: #a0d0e0;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .info-pamphlet-section {
+        margin-bottom: 25px;
+      }
+
+      .info-pamphlet-section-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #00d4ff;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .info-pamphlet-section-title::before {
+        content: "";
+        width: 4px;
+        height: 20px;
+        background: linear-gradient(180deg, #1ba7e2, #00d4ff);
+        border-radius: 2px;
+      }
+
+      .info-pamphlet-text {
+        font-size: 15px;
+        color: #b0e0e6;
+        line-height: 1.7;
+        margin-bottom: 15px;
+      }
+
+      .info-pamphlet-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .info-pamphlet-list li {
+        font-size: 14px;
+        color: #a8d0e0;
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .info-pamphlet-list li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #1ba7e2;
+        font-size: 18px;
+      }
+
+      .info-pamphlet-cta {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.2),
+          rgba(0, 212, 255, 0.1)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.4);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .info-pamphlet-button {
+        padding: 12px 30px;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.3),
+          rgba(0, 212, 255, 0.2)
+        );
+        border: 2px solid rgba(26, 167, 226, 0.6);
+        border-radius: 8px;
+        color: #00d4ff;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .info-pamphlet-button:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(26, 167, 226, 0.5),
+          rgba(0, 212, 255, 0.3)
+        );
+        border-color: rgba(0, 212, 255, 0.8);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(26, 167, 226, 0.3);
+      }
+
       @media (max-width: 768px) {
         .welcome-title {
           font-size: 48px;
@@ -1087,6 +1274,92 @@
           alt="KOMINFO Brochure"
           class="pamphlet-brochure-image"
         />
+      </div>
+    </div>
+
+    <!-- Information Pamphlet Modal -->
+    <div class="info-pamphlet-modal" id="infoPamphletModal">
+      <div class="info-pamphlet-content">
+        <button class="info-pamphlet-close" onclick="closeInfoPamphlet()">
+          ×
+        </button>
+
+        <div class="info-pamphlet-header">
+          <div class="info-pamphlet-title">📋 Welcome KOMINFO PMKN</div>
+          <div class="info-pamphlet-subtitle">
+            Komisi Informasi PMKN 2025-2026
+          </div>
+        </div>
+
+        <div class="info-pamphlet-section">
+          <div class="info-pamphlet-section-title">Tentang Kami</div>
+          <p class="info-pamphlet-text">
+            KOMINFO adalah Komisi Informasi dari Persatuan Mahasiswa Kristen
+            Nias (PMKN) Tondano. Kami berkomitmen untuk menyediakan informasi
+            akurat, transparan, dan terpercaya kepada seluruh anggota PMKN. Tim
+            kami bekerja keras untuk memastikan setiap keputusan didasarkan pada
+            data yang jelas dan komunikasi yang baik.
+          </p>
+        </div>
+
+        <div class="info-pamphlet-section">
+          <div class="info-pamphlet-section-title">Fitur Portal Kami</div>
+          <ul class="info-pamphlet-list">
+            <li>
+              <strong>📊 Project:</strong> Jelajahi semua proyek dan inisiatif
+              KOMINFO terkini
+            </li>
+            <li>
+              <strong>📤 Upload:</strong> Kelola dan unggah file proyek ke
+              Google Drive terpusat
+            </li>
+            <li>
+              <strong>🤝 Partners:</strong> Berkenalan dengan anggota tim
+              KOMINFO kami
+            </li>
+            <li>
+              <strong>ℹ️ About Us:</strong> Pelajari lebih lanjut tentang visi
+              dan misi organisasi
+            </li>
+            <li>
+              <strong>📋 Program Kerja:</strong> Lihat jadwal, timeline, dan
+              kegiatan terjadwal
+            </li>
+          </ul>
+        </div>
+
+        <div class="info-pamphlet-section">
+          <div class="info-pamphlet-section-title">Visi Kami</div>
+          <p class="info-pamphlet-text">
+            Menjadi pusat informasi yang dapat diandalkan dan responsif dalam
+            melayani kebutuhan informasi seluruh anggota PMKN dengan
+            profesionalisme dan integritas.
+          </p>
+        </div>
+
+        <div class="info-pamphlet-section">
+          <div class="info-pamphlet-section-title">Hubungi Kami</div>
+          <p class="info-pamphlet-text">
+            Untuk pertanyaan atau masukan, hubungi kami melalui email atau
+            telepon yang tercantum di bagian kontak portal.
+          </p>
+        </div>
+
+        <div class="info-pamphlet-cta">
+          <div
+            class="info-pamphlet-text"
+            style="margin-bottom: 0; font-size: 13px"
+          >
+            Terima kasih telah menjadi bagian dari KOMINFO PMKN
+          </div>
+          <button
+            class="info-pamphlet-button"
+            onclick="closeInfoPamphlet()"
+            style="margin-top: 15px"
+          >
+            Lanjutkan ke Portal
+          </button>
+        </div>
       </div>
     </div>
 
@@ -1353,6 +1626,24 @@
         if (modal) {
           modal.classList.remove("active");
         }
+        // Show info pamphlet after closing brochure
+        setTimeout(function () {
+          showInfoPamphlet();
+        }, 500);
+      }
+
+      function showInfoPamphlet() {
+        const modal = document.getElementById("infoPamphletModal");
+        if (modal) {
+          modal.classList.add("active");
+        }
+      }
+
+      function closeInfoPamphlet() {
+        const modal = document.getElementById("infoPamphletModal");
+        if (modal) {
+          modal.classList.remove("active");
+        }
       }
 
       // Close pamphlet when clicking outside the content
@@ -1364,10 +1655,30 @@
           }
         });
 
-      // Close pamphlet with Escape key
+      // Close info pamphlet when clicking outside the content
+      document
+        .getElementById("infoPamphletModal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeInfoPamphlet();
+          }
+        });
+
+      // Close pamphlets with Escape key
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") {
-          closePamphlet();
+          const pamphletModal = document.getElementById("pamphletModal");
+          const infoPamphletModal =
+            document.getElementById("infoPamphletModal");
+
+          if (pamphletModal && pamphletModal.classList.contains("active")) {
+            closePamphlet();
+          } else if (
+            infoPamphletModal &&
+            infoPamphletModal.classList.contains("active")
+          ) {
+            closeInfoPamphlet();
+          }
         }
       });
     </script>
