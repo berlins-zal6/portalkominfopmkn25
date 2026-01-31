@@ -156,34 +156,14 @@
         border-radius: 8px;
         font-size: 16px;
         font-weight: 600;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .menu a::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: rgba(26, 167, 226, 0.3);
-        transition: left 0.3s ease;
-        z-index: -1;
-      }
-
-      .menu a:hover::before {
-        left: 0;
+        transition: color 0.2s ease;
       }
 
       .menu a:hover {
         color: #00d4ff;
-        transform: translateY(-2px);
       }
 
       .menu a.active {
-        background-color: rgba(26, 167, 226, 0.5);
         color: #00d4ff;
       }
 
@@ -472,20 +452,16 @@
           width: 100%;
           text-align: left;
           font-size: 15px;
-          transition: all 0.2s ease;
+          transition: color 0.2s ease;
+          color: #e0e0e0;
         }
 
         .menu a:hover {
-          padding-left: 25px;
-          background: rgba(26, 167, 226, 0.15);
           color: #00d4ff;
         }
 
         .menu a.active {
-          background-color: rgba(26, 167, 226, 0.3);
           color: #00d4ff;
-          border-left: 4px solid #00d4ff;
-          padding-left: 16px;
         }
 
         .header {
@@ -581,11 +557,11 @@
           <span></span>
         </button>
         <ul class="menu" id="menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="project.html">Project</a></li>
-          <li><a href="upload.html">Upload</a></li>
-          <li><a href="partners.html">Partners</a></li>
-          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="index.html" class="active">🏠︎ Home</a></li>
+          <li><a href="project.html">𓂃✍︎ Project</a></li>
+          <li><a href="upload.html">🗁 Upload</a></li>
+          <li><a href="partners.html">👥 Partners</a></li>
+          <li><a href="about.html">ⓘ About</a></li>
         </ul>
       </div>
     </div>
@@ -607,13 +583,13 @@
 
       <!-- Contact Information Section -->
       <div class="contact-section">
-        <h2 class="section-title">📞 Contact Information</h2>
+        <h2 class="section-title">✆ Contact Information</h2>
 
         <div class="contact-container">
           <!-- Contact Details -->
           <div class="contact-info">
             <div class="contact-item">
-              <span class="contact-label">📍 Alamat</span>
+              <span class="contact-label">⚲ Alamat</span>
               <div class="contact-value">
                 Jl. UNIMA-Remboken No.11, Tataaran Patar, Kec. Tondano Sel.,
                 Kabupaten Minahasa, Sulawesi Utara
@@ -621,14 +597,14 @@
             </div>
 
             <div class="contact-item">
-              <span class="contact-label">📧 Email</span>
+              <span class="contact-label">✉ Email</span>
               <div class="contact-value">
-                <a href="mailto:pmkntondano@gmail.com">pmkntondano@gmail.com</a>
+                <a href="pmkntondano@gmail.com">pmkntondano@gmail.com</a>
               </div>
             </div>
 
             <div class="contact-item">
-              <span class="contact-label">📱 Phone</span>
+              <span class="contact-label">☏ Phone</span>
               <div class="contact-value">
                 -<br />
                 +62 823-6220-3045
@@ -636,7 +612,7 @@
             </div>
 
             <div class="contact-item">
-              <span class="contact-label">⏰ Ibadah</span>
+              <span class="contact-label">⏱ Ibadah</span>
               <div class="contact-value">
                 Rabu 19.00 WITA s/d Selesai <br />
                 -
@@ -658,12 +634,12 @@
                   f
                 </a>
                 <a
-                  href="https://www.instagram.com/pmkntondano"
+                  href="https://www.instagram.com/pmkn_tondano"
                   target="_blank"
                   class="social-link"
                   title="Instagram"
                 >
-                  📷
+                  🅾
                 </a>
                 <a
                   href="https://www.youtube.com/@PMKN_Tondano"
@@ -671,7 +647,7 @@
                   class="social-link"
                   title="YouTube"
                 >
-                  ▶️
+                  ▶︎
                 </a>
                 <a
                   href="https://www.tiktok.com/search?q=pmkn%20tondano&t=1769452575510"
@@ -679,7 +655,7 @@
                   class="social-link"
                   title="TikTok"
                 >
-                  🎵
+                  【ꚠ】
                 </a>
               </div>
             </div>
@@ -705,14 +681,14 @@
         </div>
 
         <!-- Google Maps Location -->
-        <h2 class="section-title" style="margin-top: 50px">📍 Our Location</h2>
+        <h2 class="section-title" style="margin-top: 50px">⚲ Lokasi</h2>
         <a
           href="https://maps.app.goo.gl/rH1hqU2f9EjX9nuC9"
           target="_blank"
           class="map-container"
         >
           <div class="map-display">
-            <div class="map-icon">📍</div>
+            <div class="map-icon">⚲</div>
             <div class="map-text">
               <h3>Lokasi PMKN Tondano</h3>
               <p>Klik untuk membuka lokasi</p>
@@ -752,6 +728,227 @@
           menu.classList.remove("active");
         }
       });
+    </script>
+    <!-- Chat Assistant Widget -->
+    <style>
+      /* Chat widget styles */
+      .chat-toggle {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        cursor: pointer;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        z-index: 3000;
+      }
+
+      .chat-panel {
+        position: fixed;
+        right: 20px;
+        bottom: 90px;
+        width: 340px;
+        max-height: 70vh;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 30, 50, 0.98),
+          rgba(10, 20, 40, 0.98)
+        );
+        border: 1px solid rgba(26, 167, 226, 0.2);
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: none;
+        flex-direction: column;
+        z-index: 3000;
+      }
+
+      .chat-panel.active {
+        display: flex;
+      }
+
+      .chat-header {
+        padding: 12px 14px;
+        background: rgba(26, 167, 226, 0.06);
+        border-bottom: 1px solid rgba(26, 167, 226, 0.06);
+        color: #eaf6fb;
+        font-weight: 700;
+      }
+
+      .chat-body {
+        padding: 10px;
+        overflow-y: auto;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .chat-msg {
+        max-width: 80%;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+      .chat-msg.user {
+        align-self: flex-end;
+        background: rgba(0, 212, 255, 0.12);
+        color: #dff9ff;
+      }
+      .chat-msg.assistant {
+        align-self: flex-start;
+        background: rgba(26, 167, 226, 0.08);
+        color: #d6f7ff;
+      }
+
+      .chat-quick {
+        padding: 10px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .chat-quick button {
+        background: rgba(26, 167, 226, 0.12);
+        border: none;
+        color: #dff9ff;
+        padding: 6px 8px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+
+      .chat-footer {
+        padding: 8px;
+        border-top: 1px solid rgba(26, 167, 226, 0.04);
+        display: flex;
+        gap: 8px;
+      }
+      .chat-footer input {
+        flex: 1;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: transparent;
+        color: #eaf6fb;
+      }
+      .chat-footer button {
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: none;
+        background: linear-gradient(135deg, #00d4ff, #1ba7e2);
+        color: #052027;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    </style>
+
+    <div class="chat-toggle" id="chatToggle">🗫</div>
+    <div class="chat-panel" id="chatPanel" aria-hidden="true">
+      <div class="chat-header">𖠌 KOMINFO Assistant</div>
+      <div class="chat-body" id="chatBody">
+        <div class="chat-quick" id="chatQuick"></div>
+      </div>
+      <div class="chat-footer">
+        <input
+          id="chatInput"
+          placeholder="Tanyakan sesuatu..."
+          aria-label="chat input"
+        />
+        <button id="chatSend">➤</button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const quickQuestions = [
+          {
+            q: "Apa itu KOMINFO?",
+            a: "KOMINFO adalah Komisi Informasi PMKN, menyediakan akses dan manajemen informasi bagi anggota PMKN.",
+          },
+          {
+            q: "Bagaimana cara upload file?",
+            a: "Pergi ke menu Upload atau klik Akses Cepat → Upload. Pilih file lalu ikuti instruksi untuk menyimpan ke Google Drive terpusat.",
+          },
+          {
+            q: "Siapa kontak untuk pertanyaan?",
+            a: "Email: pmkntondano@gmail.com. Telepon: +62 823-6220-3045.",
+          },
+          {
+            q: "Bagaimana melihat project?",
+            a: "Gunakan menu Project atau Akses Cepat → Project untuk melihat semua proyek yang terdaftar.",
+          },
+          {
+            q: "Bagaimana cara bergabung?",
+            a: "Untuk bergabung, hubungi tim melalui email atau kunjungi halaman About untuk info pendaftaran.",
+          },
+        ];
+
+        const chatToggle = document.getElementById("chatToggle");
+        const chatPanel = document.getElementById("chatPanel");
+        const chatBody = document.getElementById("chatBody");
+        const chatQuick = document.getElementById("chatQuick");
+        const chatInput = document.getElementById("chatInput");
+        const chatSend = document.getElementById("chatSend");
+
+        function appendMessage(text, role) {
+          const el = document.createElement("div");
+          el.className = "chat-msg " + (role === "user" ? "user" : "assistant");
+          el.textContent = text;
+          chatBody.appendChild(el);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function getAssistantReply(text) {
+          const t = text.trim().toLowerCase();
+          for (const item of quickQuestions) {
+            if (t === item.q.toLowerCase()) return item.a;
+            const keywords = item.q.toLowerCase().split(/\s+/).filter(Boolean);
+            for (const k of keywords) {
+              if (k.length > 3 && t.includes(k)) return item.a;
+            }
+          }
+          return "Wah pertanyaan yang bagus! Tapi saya perlu info lebih spesifik nih. 🙏 Kamu bisa tanya tentang KOMINFO, cara upload file, kontak kami, atau project yang tersedia. Atau langsung hubungi kami ya!";
+        }
+
+        function sendUserMessage(text) {
+          if (!text || !text.trim()) return;
+          appendMessage(text, "user");
+          chatInput.value = "";
+          setTimeout(() => {
+            const reply = getAssistantReply(text);
+            appendMessage(reply, "assistant");
+          }, 600);
+        }
+
+        quickQuestions.forEach((q) => {
+          const btn = document.createElement("button");
+          btn.textContent = q.q;
+          btn.addEventListener("click", () => {
+            sendUserMessage(q.q);
+          });
+          chatQuick.appendChild(btn);
+        });
+
+        chatToggle.addEventListener("click", () => {
+          const open = chatPanel.classList.toggle("active");
+          chatPanel.setAttribute("aria-hidden", open ? "false" : "true");
+          if (open) chatInput.focus();
+        });
+
+        chatSend.addEventListener("click", () =>
+          sendUserMessage(chatInput.value),
+        );
+        chatInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") sendUserMessage(chatInput.value);
+        });
+      })();
     </script>
   </body>
 </html>
